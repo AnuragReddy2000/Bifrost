@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.tabIcon{
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.DarkModeShadow{
+  border-bottom: 1px #3880ff solid;
+}

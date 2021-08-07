@@ -1,0 +1,73 @@
+.LogoBig{
+    height: 50vh;
+}
+
+.MainPageCard{
+    margin: 8px;
+    max-width: 500px;
+}
+
+.MainPageCardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    min-height: 270px;
+}
+
+.DarkModeShadow{
+    box-shadow: var(--app-home-card-shadow);
+}
+
+body{
+    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
+    0 2px 5px 0 rgb(56 128 255 / 14%), 
+    0 1px 5px 0 rgb(56 128 255 / 12%);
+}
+
+body.dark{
+    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
+    0 2px 5px 0 rgb(56 128 255 / 14%), 
+    0 1px 5px 0 rgb(56 128 255 / 12%),
+    3px 3px 3px -2px rgb(56 128 255 / 20%), 
+    3px 2px 5px 0 rgb(56 128 255 / 14%), 
+    3px 1px 5px 0 rgb(56 128 255 / 12%),
+    -3px 3px 3px -2px rgb(56 128 255 / 20%), 
+    -3px 2px 5px 0 rgb(56 128 255 / 14%), 
+    -3px 1px 5px 0 rgb(56 128 255 / 12%),
+    0px -3px 3px -2px rgb(56 128 255 / 20%), 
+    0px -2px 5px 0 rgb(56 128 255 / 14%), 
+    0px -1px 5px 0 rgb(56 128 255 / 12%);
+}
+
+.MainPagecardTextBox{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.MainPageCenterContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/main-bg-dark.svg");
+    background-size: auto 100%;
+}
+
+.MainPageCardContentRow{
+    width: 80%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+@media screen and (max-width:500px){
+    .MainPageCard{
+        margin-top: 8vh;
+        margin-bottom: 8vh;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+}
