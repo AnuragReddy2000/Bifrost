@@ -1,0 +1,99 @@
+.MainPageCard{
+    margin: 8px;
+}
+
+.MainPageButtonIcon{
+    margin: 5px;
+    margin-right: 10px;
+}
+
+.ProfilePageRoot{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.MainPageCenterContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/main-bg-dark.svg");
+    background-size: auto 100%;
+}
+
+.DarkModeShadow{
+    box-shadow: var(--app-home-card-shadow);
+}
+
+body{
+    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
+    0 2px 5px 0 rgb(56 128 255 / 14%), 
+    0 1px 5px 0 rgb(56 128 255 / 12%);
+}
+
+body.dark{
+    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
+    0 2px 5px 0 rgb(56 128 255 / 14%), 
+    0 1px 5px 0 rgb(56 128 255 / 12%),
+    3px 3px 3px -2px rgb(56 128 255 / 20%), 
+    3px 2px 5px 0 rgb(56 128 255 / 14%), 
+    3px 1px 5px 0 rgb(56 128 255 / 12%),
+    -3px 3px 3px -2px rgb(56 128 255 / 20%), 
+    -3px 2px 5px 0 rgb(56 128 255 / 14%), 
+    -3px 1px 5px 0 rgb(56 128 255 / 12%),
+    0px -3px 3px -2px rgb(56 128 255 / 20%), 
+    0px -2px 5px 0 rgb(56 128 255 / 14%), 
+    0px -1px 5px 0 rgb(56 128 255 / 12%);
+}
+
+.ProfilePageCardCol{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProfilePageJustifyCenter{
+    justify-content: center;
+    align-items: center;
+}
+
+.ProfilePageNameEdit{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 8px;
+    max-width: 200px;
+}
+
+.ProfilePageAvatarEdit{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 150px;
+    height: 150px;
+    margin: 8px;
+}
+
+.ProfilePageAvatarFAB{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 20px;
+}
+
+.ProfilePageHeader{
+    padding-bottom: 1px;
+    border-bottom: 2px solid #3880ff;
+    margin-bottom: 1px;
+}

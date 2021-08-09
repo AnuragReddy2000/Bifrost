@@ -1,0 +1,23 @@
+.AppTextField{
+    width: 100%;
+    border: 1px solid var(--ion-color-step-500);
+    border-radius: 4px;
+    padding: 12px 20px;
+    margin: 5px;
+    box-sizing: border-box;
+    background-color: var(--ion-background-color);
+    color: var(--ion-text-color);
+}
+
+.AppTextField:hover{
+    outline: none;
+    border: 1px solid var(--ion-color-step-700);
+    border-radius: 4px;
+}
+
+.AppTextField:focus{
+    outline: none;
+    border: 2px solid #3880ff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}

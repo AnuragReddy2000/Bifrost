@@ -7,29 +7,33 @@ import { Component, h } from '@stencil/core';
 export class AppHome {
   
   render() {
-    return [
-      <app-header></app-header>,
-      <ion-content class="ion-padding MainPageContent">
-        <div class="MainPageCenterContent">
-          <ion-card class="DarkModeShadow MainPageCard">
-            <ion-card-content>
-              <div class="MainPageCardContent">
-                <ion-row class="MainPageCardContentRow">
-                  <img src="/assets/logo-bifrost.png" height={100}></img>
-                  <div class="MainPagecardTextBox">
-                    <ion-text color="primary"><h1>Welcome to Bifrost!</h1></ion-text>
-                    <ion-text color="medium"><p>A peer to peer secure voice call app </p></ion-text>
-                  </div>
-                </ion-row>
-                <ion-row class="MainPageCardContentRow">
-                  <ion-button>Start a call</ion-button>
-                  <ion-button>Join a call</ion-button>
-                </ion-row>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </ion-content>,
-    ];
+    return (
+      <div class="HomePageRoot">
+        <ion-card class="DarkModeShadow MainPageCard">
+          <ion-card-content>
+            <div class="MainPageCardContent">
+              <ion-row class="MainPageCardContentRow">
+                <img src="/assets/logo-bifrost.png" height={100}></img>
+                <div class="MainPagecardTextBox">
+                  <ion-text color="primary"><h1><b>Welcome to Bifrost!</b></h1></ion-text>
+                  <ion-text color="medium"><p><b>A peer to peer secure voice call app</b></p></ion-text>
+                </div>
+              </ion-row>
+              <ion-row class="MainPageCardContentRow">
+                <ion-button expand="block">
+                  <ion-icon class="MainPageButtonIcon" name="call" ></ion-icon>
+                  <ion-text>Start a call</ion-text>
+                </ion-button>
+                <ion-button expand="block">
+                  <ion-icon class="MainPageButtonIcon" name="enter" ></ion-icon>
+                  <ion-text>Join a call</ion-text>
+                </ion-button>
+              </ion-row>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    );
   }
 }
+

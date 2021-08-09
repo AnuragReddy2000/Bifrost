@@ -8,5 +8,5 @@
 }
 
 .DarkModeShadow{
-  border-bottom: 1px #3880ff solid;
+  box-shadow: var(--app-home-card-shadow);
 }

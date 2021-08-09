@@ -19,15 +19,15 @@ export class AppHeader {
         <ion-toolbar >
           <ion-title size="large"><ion-text color="primary"><h3>Bifrost</h3></ion-text> </ion-title>
           <ion-buttons slot="end">
-            <ion-button onClick={this.toggleDarkMode} slot={globalState.deviceWidth > 500 ? "buton" : "icon-only"}>
+            <ion-button onClick={this.toggleDarkMode} shape={globalState.deviceWidth > 500 ? null : "round"}>
               <ion-icon class="tabIcon" name={globalState.darkmode ? "sunny": "moon"} size={globalState.deviceWidth > 500 ? "small" : "large"} ></ion-icon>
               {globalState.deviceWidth > 500 ? <ion-text>{globalState.darkmode ? "light" : "dark"} mode</ion-text>: null}
             </ion-button>
           </ion-buttons>
           <ion-buttons slot="end">
-            <ion-button slot={globalState.deviceWidth > 500 ? "buton" : "icon-only"}>
-              <ion-icon class="tabIcon" name="person-circle" size={globalState.deviceWidth > 500 ? "small" : "large"}></ion-icon>
-              {globalState.deviceWidth > 500 ? <ion-text>User</ion-text> : null}
+            <ion-button shape={globalState.deviceWidth > 500 ? null : "round"} href="/profile" disabled={globalState.path==="/profile"}>
+              <ion-icon class="tabIcon" src={"https://avatars.dicebear.com/api/gridy/" + globalState.avatar + ".svg"} size={ "large"}></ion-icon>
+              {globalState.deviceWidth > 500 ? <ion-text>{globalState.username}</ion-text> : null}
             </ion-button>
           </ion-buttons>
         </ion-toolbar>
