@@ -20,6 +20,7 @@ export class AppRoot {
             <ion-router useHash={false}>
               <ion-route url="/" component="app-home" beforeEnter={()=>this.changeGlobalPath("/")}/>
               <ion-route url="/profile" component="app-profile" beforeEnter={()=>this.changeGlobalPath("/profile")}/>
+              <ion-route url="/new" component="new-call-page" beforeEnter={()=>this.changeGlobalPath("/new")}/>
             </ion-router>
             <ion-nav />
           </div>

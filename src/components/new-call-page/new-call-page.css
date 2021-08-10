@@ -1,0 +1,36 @@
+.NewCallPageRoot{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.DarkModeShadow{
+    box-shadow: var(--app-home-card-shadow);
+}
+
+.MainPageCard{
+    margin: 8px;
+    padding: 10px;
+}
+
+.NewPageCardContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.NewPageCardContentLines{
+    margin: 8px;
+    text-align: center;
+}
+
+.NewPageCardContentIcon{
+    margin: 5px;
+    margin-right: 10px;
+}

@@ -14,6 +14,8 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface NewCallPage {
+    }
     interface TextField {
         "onChangeCallback": (value: string) => void;
         "value": string;
@@ -44,6 +46,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLNewCallPageElement extends Components.NewCallPage, HTMLStencilElement {
+    }
+    var HTMLNewCallPageElement: {
+        prototype: HTMLNewCallPageElement;
+        new (): HTMLNewCallPageElement;
+    };
     interface HTMLTextFieldElement extends Components.TextField, HTMLStencilElement {
     }
     var HTMLTextFieldElement: {
@@ -55,6 +63,7 @@ declare global {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "new-call-page": HTMLNewCallPageElement;
         "text-field": HTMLTextFieldElement;
     }
 }
@@ -67,6 +76,8 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface NewCallPage {
+    }
     interface TextField {
         "onChangeCallback"?: (value: string) => void;
         "value"?: string;
@@ -76,6 +87,7 @@ declare namespace LocalJSX {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "new-call-page": NewCallPage;
         "text-field": TextField;
     }
 }
@@ -87,6 +99,7 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "new-call-page": LocalJSX.NewCallPage & JSXBase.HTMLAttributes<HTMLNewCallPageElement>;
             "text-field": LocalJSX.TextField & JSXBase.HTMLAttributes<HTMLTextFieldElement>;
         }
     }

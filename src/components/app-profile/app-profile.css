@@ -31,27 +31,6 @@
     box-shadow: var(--app-home-card-shadow);
 }
 
-body{
-    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
-    0 2px 5px 0 rgb(56 128 255 / 14%), 
-    0 1px 5px 0 rgb(56 128 255 / 12%);
-}
-
-body.dark{
-    --app-home-card-shadow: 0 3px 3px -2px rgb(56 128 255 / 20%), 
-    0 2px 5px 0 rgb(56 128 255 / 14%), 
-    0 1px 5px 0 rgb(56 128 255 / 12%),
-    3px 3px 3px -2px rgb(56 128 255 / 20%), 
-    3px 2px 5px 0 rgb(56 128 255 / 14%), 
-    3px 1px 5px 0 rgb(56 128 255 / 12%),
-    -3px 3px 3px -2px rgb(56 128 255 / 20%), 
-    -3px 2px 5px 0 rgb(56 128 255 / 14%), 
-    -3px 1px 5px 0 rgb(56 128 255 / 12%),
-    0px -3px 3px -2px rgb(56 128 255 / 20%), 
-    0px -2px 5px 0 rgb(56 128 255 / 14%), 
-    0px -1px 5px 0 rgb(56 128 255 / 12%);
-}
-
 .ProfilePageCardCol{
     width: 100%;
     display: flex;
