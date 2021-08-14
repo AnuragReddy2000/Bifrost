@@ -12,6 +12,9 @@ jobs:
           npm install
           npm run build
 
+      - name: Add .nojekyll
+        run: touch /www/.noekyll
+
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
