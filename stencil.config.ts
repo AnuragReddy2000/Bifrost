@@ -10,7 +10,6 @@ export const config: Config = {
     type: 'www',
     serviceWorker: null,
     baseUrl:"https://anuragreddy2000.github.io/Bifrost/",
-    buildDir: "Bifrost"
   }],
   devServer: {
     address: "0.0.0.0",
