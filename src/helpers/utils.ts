@@ -5,7 +5,7 @@ export function randomString() {
 export async function generateHash(input: string) {
   var buffer = new TextEncoder().encode(input);
   var enc_buffer = await crypto.subtle.digest("SHA-256", buffer);
-  return hex(enc_buffer);
+  return hex(enc_buffer).substr(0,10);
 }
 
 export function hex(buffer: ArrayBuffer) {

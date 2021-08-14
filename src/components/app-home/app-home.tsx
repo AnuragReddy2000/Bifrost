@@ -20,11 +20,11 @@ export class AppHome {
                 </div>
               </ion-row>
               <ion-row class="MainPageCardContentRow">
-                <ion-button expand="block" href="/new">
+                <ion-button expand="block" href="/start">
                   <ion-icon class="MainPageButtonIcon" name="call" ></ion-icon>
                   <ion-text>Start a call</ion-text>
                 </ion-button>
-                <ion-button expand="block">
+                <ion-button expand="block" href="/join">
                   <ion-icon class="MainPageButtonIcon" name="enter" ></ion-icon>
                   <ion-text>Join a call</ion-text>
                 </ion-button>

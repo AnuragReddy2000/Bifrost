@@ -15,7 +15,7 @@ export class AppHeader {
 
   render() {
     return [
-      <ion-header class="DarkModeShadow">
+      <ion-header class="HeaderBorder">
         <ion-toolbar >
           <ion-title size="large"><ion-text color="primary"><h3>Bifrost</h3></ion-text> </ion-title>
           <ion-buttons slot="end">

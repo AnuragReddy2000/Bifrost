@@ -10,7 +10,7 @@ export class TextField{
 
     render(){
         return(
-            <input class="AppTextField" value={this.value} onChange={(event)=>this.onChangeCallback((event.target as HTMLInputElement).value)}></input>
+            <ion-input class="AppTextField" value={this.value} onIonChange={(event)=>this.onChangeCallback(event.detail.value)}></ion-input>
         );
     }
 }

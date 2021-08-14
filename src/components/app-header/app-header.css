@@ -7,6 +7,6 @@
   margin-left: 5px;
 }
 
-.DarkModeShadow{
-  box-shadow: var(--app-home-card-shadow);
+.HeaderBorder{
+  border-bottom: 1px solid rgb(56 128 255);
 }

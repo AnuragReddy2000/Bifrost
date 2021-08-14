@@ -14,6 +14,11 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface CallPage {
+        "roomname": string;
+    }
+    interface JoinCall {
+    }
     interface NewCallPage {
     }
     interface TextField {
@@ -46,6 +51,18 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLCallPageElement extends Components.CallPage, HTMLStencilElement {
+    }
+    var HTMLCallPageElement: {
+        prototype: HTMLCallPageElement;
+        new (): HTMLCallPageElement;
+    };
+    interface HTMLJoinCallElement extends Components.JoinCall, HTMLStencilElement {
+    }
+    var HTMLJoinCallElement: {
+        prototype: HTMLJoinCallElement;
+        new (): HTMLJoinCallElement;
+    };
     interface HTMLNewCallPageElement extends Components.NewCallPage, HTMLStencilElement {
     }
     var HTMLNewCallPageElement: {
@@ -63,6 +80,8 @@ declare global {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "call-page": HTMLCallPageElement;
+        "join-call": HTMLJoinCallElement;
         "new-call-page": HTMLNewCallPageElement;
         "text-field": HTMLTextFieldElement;
     }
@@ -76,6 +95,11 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface CallPage {
+        "roomname"?: string;
+    }
+    interface JoinCall {
+    }
     interface NewCallPage {
     }
     interface TextField {
@@ -87,6 +111,8 @@ declare namespace LocalJSX {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "call-page": CallPage;
+        "join-call": JoinCall;
         "new-call-page": NewCallPage;
         "text-field": TextField;
     }
@@ -99,6 +125,8 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "call-page": LocalJSX.CallPage & JSXBase.HTMLAttributes<HTMLCallPageElement>;
+            "join-call": LocalJSX.JoinCall & JSXBase.HTMLAttributes<HTMLJoinCallElement>;
             "new-call-page": LocalJSX.NewCallPage & JSXBase.HTMLAttributes<HTMLNewCallPageElement>;
             "text-field": LocalJSX.TextField & JSXBase.HTMLAttributes<HTMLTextFieldElement>;
         }

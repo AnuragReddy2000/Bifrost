@@ -12,6 +12,7 @@ export class AppRoot {
   }
 
   render() {
+    (window as any).parcelRequire = undefined;
     return (
       <ion-app>
         <app-header></app-header>
@@ -20,7 +21,9 @@ export class AppRoot {
             <ion-router useHash={false}>
               <ion-route url="/" component="app-home" beforeEnter={()=>this.changeGlobalPath("/")}/>
               <ion-route url="/profile" component="app-profile" beforeEnter={()=>this.changeGlobalPath("/profile")}/>
-              <ion-route url="/new" component="new-call-page" beforeEnter={()=>this.changeGlobalPath("/new")}/>
+              <ion-route url="/start" component="new-call-page" beforeEnter={()=>this.changeGlobalPath("/new")}/>
+              <ion-route url="/join" component="join-call" beforeEnter={()=>this.changeGlobalPath("/join")}/>
+              <ion-route url="/call/:roomname" component="call-page" beforeEnter={()=>this.changeGlobalPath("/call")}/>
             </ion-router>
             <ion-nav />
           </div>
