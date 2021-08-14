@@ -8,7 +8,8 @@ export const config: Config = {
   taskQueue: 'async',
   outputTargets: [{
     type: 'www',
-    serviceWorker: null
+    serviceWorker: null,
+    baseUrl:"Bifrost/"
   }],
   devServer: {
     address: "0.0.0.0",
