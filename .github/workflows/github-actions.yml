@@ -13,7 +13,9 @@ jobs:
           npm run build
 
       - name: Add .nojekyll
-        run: touch /www/.noekyll
+        run: |
+          cd www
+          touch .nojekyll
 
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@4.1.4
