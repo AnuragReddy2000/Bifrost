@@ -9,7 +9,7 @@ export const config: Config = {
   outputTargets: [{
     type: 'www',
     serviceWorker: null,
-    baseUrl:"https://anuragreddy2000.github.io/Bifrost/",
+    baseUrl:"/Bifrost/",
   }],
   devServer: {
     address: "0.0.0.0",
