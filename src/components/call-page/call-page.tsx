@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import Peer from 'peerjs';
 import globalState from '../../global/app-state';
 import { generateHash } from '../../helpers/utils';
@@ -15,6 +15,17 @@ export class CallPage{
     @State() remoteStream: MediaStream;
     @State() mute: boolean = false;
 
+    onCallStart(){
+        if(this.currentState === "INCALL"){
+            const audio = (document.getElementById("bifrost-audio-stream") as HTMLAudioElement);
+            console.log(audio);
+            audio.srcObject = this.remoteStream;
+            audio.muted = false;
+            console.log("remote");
+            console.log(this.remoteStream);
+        }
+    }
+
     toggleMute = () => {
         this.mute = !this.mute;
     }
@@ -29,7 +40,7 @@ export class CallPage{
             return(
                 <ion-card-content>
                     Connected!
-                    <audio src={window.URL.createObjectURL(this.remoteStream)}/>
+                    <audio muted={true} id="bifrost-audio-stream" autoplay/>
                 </ion-card-content>
                 
             )
@@ -48,29 +59,37 @@ export class CallPage{
 
     init = async () => {
         const hash = await generateHash("bifrost-"+this.roomname);
-        let newPeer = new Peer();
+        let newPeer = new Peer({
+            debug: 3
+        });
         await this.getLocalStream();
         this.peer = newPeer;
         console.log(this.peer);
-        const dataConnection = this.peer.connect("bifrost-"+hash);
-        console.log(dataConnection);
-        const call = this.peer.call("bifrost-"+hash, this.localStream);
-        console.log(call);
-        console.log(call.open);
-        call.on("stream", (stream)=>{
-            this.remoteStream = stream;
-            this.currentState = "INCALL";
+        this.peer.on("open",(id)=>{
+            const dataConnection = this.peer.connect("bifrost-"+hash);
+            console.log(dataConnection);
+            const call = this.peer.call("bifrost-"+hash, this.localStream);
+            console.log(call);
+            console.log(call.open);
+            call.on("stream", (stream)=>{
+                this.remoteStream = stream;
+                this.currentState = "INCALL";
+            });
+            call.on("error",(error)=>{
+                alert(error);
+            })
+            this.peer.on("error", (error)=>{
+                alert(error);
+            })
         });
-        call.on("error",(error)=>{
-            alert(error);
-        })
-        this.peer.on("error", (error)=>{
-            alert(error);
-        })
     }
 
     componentDidLoad(){
         this.init();
+    }
+
+    componentDidUpdate(){
+        this.onCallStart();
     }
     
     render(){

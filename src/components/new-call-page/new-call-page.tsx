@@ -1,5 +1,5 @@
 import { toastController } from '@ionic/core';
-import { Component, h, State } from '@stencil/core';
+import { Component, h, State, Watch } from '@stencil/core';
 import Peer from 'peerjs';
 import randomWords from 'random-words';
 import globalState from '../../global/app-state';
@@ -16,6 +16,16 @@ export class NewCallPage {
     @State() currentState: "INIT" | "WAITING" | "INCALL" = "INIT";
     @State() localStream: MediaStream;
     @State() remoteStream: MediaStream;
+
+    onCallStart(){
+        if(this.currentState === "INCALL"){
+            const audio = (document.getElementById("bifrost-audio-stream") as HTMLAudioElement);
+            audio.srcObject = this.remoteStream;
+            audio.muted = false;
+            console.log("remote");
+            console.log(this.remoteStream);
+        }
+    }
 
     randomizeRoomName = () => {
         this.roomName = randomWords({exactly: 2, maxLength: 4, join: "-"});
@@ -48,7 +58,9 @@ export class NewCallPage {
 
     init = async () => {
         const hash = await generateHash("bifrost-"+this.roomName);
-        let newPeer = new Peer("bifrost-"+ hash);
+        let newPeer = new Peer("bifrost-"+ hash,{
+            debug: 3
+        });
         await this.getLocalStream();
         this.peer = newPeer;
         console.log(this.peer);
@@ -62,10 +74,10 @@ export class NewCallPage {
             const answerCall = true;
             if(answerCall){
                 call.answer(this.localStream);
-                this.currentState = "INCALL";
                 call.on("stream", (stream)=>{
                     this.remoteStream = stream;
                 });
+                this.currentState = "INCALL";
             }else{
                 alert("Call reected");
             }
@@ -106,7 +118,7 @@ export class NewCallPage {
                 <ion-card-content>
                     <div class="NewPageCardContent">
                         <ion-text color="primary"><h1><b>In call:</b></h1></ion-text>
-                        <audio src={window.URL.createObjectURL(this.remoteStream)}/>
+                        <audio muted={true} id="bifrost-audio-stream" autoPlay/>
                     </div>
                 </ion-card-content>
             )
@@ -115,6 +127,10 @@ export class NewCallPage {
 
     componentDidLoad(){
         this.init();
+    }
+
+    componentDidUpdate(){
+        this.onCallStart();
     }
 
     render(){

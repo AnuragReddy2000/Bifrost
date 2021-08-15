@@ -13,7 +13,7 @@ export class AppHome {
           <ion-card-content>
             <div class="MainPageCardContent">
               <ion-row class="MainPageCardContentRow">
-                <img src="/assets/logo-bifrost.png" height={100}></img>
+                <img src="./assets/logo-bifrost.png" height={100}></img>
                 <div class="MainPagecardTextBox">
                   <ion-text color="primary"><h1><b>Welcome to Bifrost!</b></h1></ion-text>
                   <ion-text color="medium"><p><b>A peer to peer secure voice call app</b></p></ion-text>
