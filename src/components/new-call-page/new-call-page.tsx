@@ -21,6 +21,7 @@ export class NewCallPage {
         if(this.currentState === "INCALL"){
             const audio = (document.getElementById("bifrost-audio-stream") as HTMLAudioElement);
             audio.srcObject = this.remoteStream;
+            audio.autoplay = true;
             audio.muted = false;
             console.log("remote");
             console.log(this.remoteStream);
@@ -118,7 +119,7 @@ export class NewCallPage {
                 <ion-card-content>
                     <div class="NewPageCardContent">
                         <ion-text color="primary"><h1><b>In call:</b></h1></ion-text>
-                        <audio muted={true} id="bifrost-audio-stream" autoPlay/>
+                        <audio muted={false} id="bifrost-audio-stream" autoPlay/>
                     </div>
                 </ion-card-content>
             )

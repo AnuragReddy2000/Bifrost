@@ -20,6 +20,7 @@ export class CallPage{
             const audio = (document.getElementById("bifrost-audio-stream") as HTMLAudioElement);
             console.log(audio);
             audio.srcObject = this.remoteStream;
+            audio.autoplay = true;
             audio.muted = false;
             console.log("remote");
             console.log(this.remoteStream);
