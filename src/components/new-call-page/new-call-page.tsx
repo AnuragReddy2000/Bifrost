@@ -1,5 +1,5 @@
 import { toastController } from '@ionic/core';
-import { Component, h, State, Watch } from '@stencil/core';
+import { Component, h, State} from '@stencil/core';
 import Peer from 'peerjs';
 import randomWords from 'random-words';
 import globalState from '../../global/app-state';

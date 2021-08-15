@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State} from '@stencil/core';
 import Peer from 'peerjs';
 import globalState from '../../global/app-state';
 import { generateHash } from '../../helpers/utils';
@@ -66,6 +66,7 @@ export class CallPage{
         this.peer = newPeer;
         console.log(this.peer);
         this.peer.on("open",(id)=>{
+            console.log(id);
             const dataConnection = this.peer.connect("bifrost-"+hash);
             console.log(dataConnection);
             const call = this.peer.call("bifrost-"+hash, this.localStream);
