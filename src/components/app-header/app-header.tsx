@@ -17,7 +17,7 @@ export class AppHeader {
     return [
       <ion-header class="HeaderBorder">
         <ion-toolbar >
-          <ion-title size="large"><ion-text color="primary"><h3>Bifrost</h3></ion-text> </ion-title>
+          <ion-title size="large"><ion-router-link href="/" color={globalState.darkmode ? "light": "dark"}><ion-text ><h3>Bifrost</h3></ion-text></ion-router-link> </ion-title>
           <ion-buttons slot="end">
             <ion-button onClick={this.toggleDarkMode} shape={globalState.deviceWidth > 500 ? null : "round"}>
               <ion-icon class="tabIcon" name={globalState.darkmode ? "sunny": "moon"} size={globalState.deviceWidth > 500 ? "small" : "large"} ></ion-icon>

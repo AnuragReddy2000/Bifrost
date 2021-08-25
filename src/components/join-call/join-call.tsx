@@ -11,7 +11,7 @@ export class JoinCall{
         return(
             <div class="NewCallPageRoot">
                 <ion-card class="DarkModeShadow MainPageCard">
-                    <ion-card-content>
+                    <ion-card-content class="JoinCallCardContent">
                         <div class="NewPageCardContent">
                             <ion-text color="primary"><h1><b>Join a call:</b></h1></ion-text>
                             <text-field value={this.callcode} onChangeCallback={(value)=>{this.callcode=value}}></text-field>

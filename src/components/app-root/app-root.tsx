@@ -18,7 +18,7 @@ export class AppRoot {
         <app-header></app-header>
         <ion-content class="ion-padding">
           <div class="PageBackground">
-            <ion-router useHash={false} root="/Bifrost/">
+            <ion-router useHash={false}>
               <ion-route url="/" component="app-home" beforeEnter={()=>this.changeGlobalPath("/")}/>
               <ion-route url="/profile" component="app-profile" beforeEnter={()=>this.changeGlobalPath("/profile")}/>
               <ion-route url="/start" component="new-call-page" beforeEnter={()=>this.changeGlobalPath("/new")}/>
