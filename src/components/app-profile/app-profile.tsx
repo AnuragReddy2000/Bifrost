@@ -6,6 +6,7 @@ import { randomString } from '../../helpers/utils';
 @Component({
   tag: 'app-profile',
   styleUrl: 'app-profile.css',
+  shadow: true
 })
 export class AppProfile {
   randomizeAvatar = () => {
@@ -44,7 +45,7 @@ export class AppProfile {
             <div class="ProfilePageCardCol">
               <ion-text class="ProfilePageHeader" color="primary"><h1><b>User Profile</b></h1></ion-text>
               <div class="ProfilePageAvatarEdit">
-                  <img height="150" src={"https://avatars.dicebear.com/api/gridy/" +this.avatar + ".svg"}></img>
+                  <img height="150" src={"https://avatars.dicebear.com/api/gridy/" +this.avatar + ".svg"} alt="User Avatar"></img>
                   <ion-fab-button color={globalState.darkmode ? "primary" : "light"} class="ProfilePageAvatarFAB DarkModeShadow" size="small" onClick={this.randomizeAvatar}>
                     <ion-icon name="refresh-outline"></ion-icon>
                   </ion-fab-button>

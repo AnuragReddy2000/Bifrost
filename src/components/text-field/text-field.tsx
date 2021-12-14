@@ -2,7 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
     tag: "text-field",
-    styleUrl: "text-field.css"
+    styleUrl: "text-field.css",
+    shadow: true
 })
 export class TextField{
     @Prop() value: string;

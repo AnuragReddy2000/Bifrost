@@ -6,7 +6,8 @@ import { generateHash } from '../../helpers/utils';
 
 @Component({
     tag: "call-page",
-    styleUrl: "call-page.css"
+    styleUrl: "call-page.css",
+    shadow: true,
 })
 export class CallPage{
     @Prop() roomname: string;
@@ -15,6 +16,7 @@ export class CallPage{
     @State() localStream: MediaStream;
     @State() remoteStream: MediaStream;
     @State() mute: boolean = false;
+    @State() callerData: {displayName: string, avatar: string} = {displayName:"", avatar:"default"};
 
     onCallStart(){
         if(this.currentState === "INCALL"){
@@ -28,21 +30,36 @@ export class CallPage{
     getRenderingContent = () => {
         if(this.currentState==="CONNECTING"){
             return(
-                <ion-card-content>Connecting</ion-card-content>
+                <ion-card-content>
+                    <div class="CallPageCardContent">
+                        <ion-text color="primary"><h1><b>Connecting your call...</b></h1></ion-text>
+                        <ion-spinner class="LoadingSpinner"/>
+                    </div>
+                </ion-card-content>
             )
         }
         else if(this.currentState==="INCALL"){
             return(
                 <ion-card-content>
-                    Connected!
-                    <audio muted={true} id="bifrost-audio-stream" autoplay/>
+                    <div class="CallPageCardContent">
+                        <div class="InCallAvatar">
+                            <img height="130" src={"https://avatars.dicebear.com/api/gridy/" +this.callerData.avatar + ".svg"} alt="Host Avatar"></img>
+                        </div>
+                        <ion-text color="primary"><h1><b>In call: {this.callerData.displayName}</b></h1></ion-text>
+                        <audio muted={false} id="bifrost-audio-stream" autoPlay/>
+                    </div>
                 </ion-card-content>
                 
             )
         }
         else{
             return(
-                <ion-card-content>The End</ion-card-content>
+                <ion-card-content>
+                    <div class="CallPageCardContent">
+                        <ion-text color="primary"><h1><b>The host ended the call.</b></h1></ion-text>
+                        <ion-text><h3><b>Returning to home page...</b></h3></ion-text>
+                    </div>
+                </ion-card-content>
             )
         }
     }
@@ -86,10 +103,25 @@ export class CallPage{
             });
             call.on("error",(error)=>{
                 alert(error);
-            })
+            });
+            call.peerConnection.addEventListener("iceconnectionstatechange", ()=>{
+                if(call.peerConnection.iceConnectionState == "disconnected"){
+                    this.remoteStream = undefined;
+                    this.callerData = undefined;
+                    this.currentState = 'ENDED';
+                    this.callerData = {displayName:"", avatar:"default"}
+                    window.setTimeout(()=>{
+                        this.peer.destroy();
+                        window.location.href = "/"
+                    },1000);
+                }
+            });
             this.peer.on("error", (error)=>{
                 alert(error);
             })
+        });
+        this.peer.on("connection",(dataConnection)=>{
+            this.callerData = dataConnection.metadata as {displayName: string, avatar: string};
         });
     }
 

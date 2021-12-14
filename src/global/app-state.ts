@@ -29,6 +29,7 @@ const { state, onChange } = createStore<AppState>({
 
 onChange("darkmode", value => {
     window.localStorage.setItem('darkmode', String(value));
+    document.body.classList.toggle('dark', value);
 });
 
 onChange("username", value => {

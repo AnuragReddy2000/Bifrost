@@ -47,6 +47,34 @@
     border: 1px solid grey;
 }
 
+.CallPageCardContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 210px;
+    text-align: center;
+}
+
+.InCallAvatar{
+    height: 170px;
+    width: 170px;
+    border-radius: 85px;
+    background-color: rgba(56, 128, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.LoadingSpinner{
+    margin: 20px;
+    height: 100px;
+    width: 100px;
+    margin-top: 30px;
+}
+
 .CallPageCopyButton{
     margin: 0px 3px 0px 18px;
 }

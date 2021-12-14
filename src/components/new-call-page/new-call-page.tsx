@@ -7,7 +7,8 @@ import { generateHash } from '../../helpers/utils';
 
 @Component({
     tag: "new-call-page",
-    styleUrl: "new-call-page.css"
+    styleUrl: "new-call-page.css",
+    shadow: true
 })
 export class NewCallPage {
     @State() roomName: string = randomWords({exactly: 2, maxLength: 4, join: "-"});
@@ -81,16 +82,39 @@ export class NewCallPage {
                 if(answerCall){
                     this.callerData = newCallerData;
                     call.answer(this.localStream);
+                    this.peer.connect(call.peer, {
+                        metadata: {
+                            "displayName": globalState.username,
+                            "avatar": globalState.avatar
+                        }
+                    });
                     call.on("stream", (stream)=>{
                         this.remoteStream = stream;
                     });
                     call.on("close", ()=>{
-                        this.remoteStream = undefined;
-                        this.callerData = undefined;
-                        this.currentState = "WAITING";
+                        console.log("Call ended");
+                    });
+                    call.on("error",()=>{
+                        console.log("connection error");
+                    });
+                    call.peerConnection.addEventListener("iceconnectionstatechange", ()=>{
+                        if (call.peerConnection.iceConnectionState == "disconnected"){
+                            toastController.create({
+                                message: newCallerData.displayName + 'left the call!',
+                                duration: 2000,
+                                color:"danger"
+                            }).then((toast)=>{
+                                toast.present();
+                            });
+                            this.remoteStream = undefined;
+                            this.callerData = undefined;
+                            this.currentState = "WAITING";
+                            this.callerData = {displayName:"", avatar:"default"}
+                        }
                     });
                     this.currentState = "INCALL";
                 }else{
+                    
                     alert("Call rejected");
                 }
             });
@@ -135,7 +159,7 @@ export class NewCallPage {
                 <ion-card-content>
                     <div class="NewPageCardContent">
                         <div class="InCallAvatar">
-                            <img height="130" src={"https://avatars.dicebear.com/api/gridy/" +this.callerData.avatar + ".svg"}></img>
+                            <img height="130" src={"https://avatars.dicebear.com/api/gridy/" +this.callerData.avatar + ".svg"} alt="Caller Avatar"></img>
                         </div>
                         <ion-text color="primary"><h1><b>In call: {this.callerData.displayName}</b></h1></ion-text>
                         <audio muted={false} id="bifrost-audio-stream" autoPlay/>

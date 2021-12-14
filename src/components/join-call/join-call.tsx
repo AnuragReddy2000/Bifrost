@@ -2,7 +2,8 @@ import { Component, h, State } from '@stencil/core';
 
 @Component({
     tag: "join-call",
-    styleUrl: "join-call.css"
+    styleUrl: "join-call.css",
+    shadow: true
 })
 export class JoinCall{
     @State() callcode: string;

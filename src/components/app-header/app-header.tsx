@@ -8,9 +8,14 @@ import globalState from '../../global/app-state';
 })
 export class AppHeader {
 
+  componentWillRender(){
+    if(globalState.darkmode == true){
+      document.body.classList.add('dark');
+    }
+  }
+
   toggleDarkMode = () => {
     globalState.darkmode = !globalState.darkmode;
-    document.body.classList.toggle('dark', globalState.darkmode);
   }
 
   render() {

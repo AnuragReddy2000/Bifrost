@@ -8,7 +8,11 @@ export const config: Config = {
   taskQueue: 'async',
   outputTargets: [{
     type: 'www',
-    serviceWorker: null,
+    serviceWorker: {
+      globPatterns: [
+        '**/*.{js,css,json,html,ico,png}'
+      ]
+    }
   }],
   devServer: {
     address: "0.0.0.0",
