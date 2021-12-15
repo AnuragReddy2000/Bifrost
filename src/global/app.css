@@ -61,6 +61,9 @@
   --ion-color-step-850: #262626;
   --ion-color-step-900: #191919;
   --ion-color-step-950: #0d0d0d;
+
+  --mute-button-border: none;
+  --mute-button-background: white;
 }
 
 body.dark{
@@ -102,5 +105,8 @@ body.dark{
   --ion-color-step-850: #cccccc;
   --ion-color-step-900: #d9d9d9;
   --ion-color-step-950: #e6e6e6;
+
+  --mute-button-border: 2px solid grey;
+  --mute-button-background: black;
 }
 

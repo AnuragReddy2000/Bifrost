@@ -14,8 +14,6 @@
 .MainPageCard{
     margin: 8px;
     padding: 10px;
-    width: 100%;
-    max-width: 500px;
 }
 
 .NewPageCardContent{
@@ -84,13 +82,22 @@ body.dark{
 
 .MuteButton{
     margin: 0px 10px 0px 15px;
-    --background: red;
+    background-color: var(--mute-button-background) !important;
+    border-radius: 50px;
+    border: var(--mute-button-border);
+}
+
+.MutedButton{
+    background-color: red !important;
+    margin: 0px 10px 0px 15px;
     border-radius: 50px;
     border: var(--mute-button-border);
 }
 
 .ExitCallButton{
     height: 50px;
+    background-color: red;
+    border-radius: 25px;
 }
 
 .LoadingSpinner{

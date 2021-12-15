@@ -6,6 +6,11 @@ import { Component, h } from '@stencil/core';
   shadow: true
 })
 export class AppHome {
+
+  navToPpage = (page: string) =>{
+    let ionRouterElement = document.querySelector('ion-router');
+    ionRouterElement.push(page);
+  }
   
   render() {
     return (
@@ -21,11 +26,11 @@ export class AppHome {
                 </div>
               </ion-row>
               <ion-row class="MainPageCardContentRow">
-                <ion-button expand="block" href="/start">
+                <ion-button expand="block" onClick={()=>{this.navToPpage("/start")}}>
                   <ion-icon class="MainPageButtonIcon" name="call" ></ion-icon>
                   <ion-text>Start a call</ion-text>
                 </ion-button>
-                <ion-button expand="block" href="/join">
+                <ion-button expand="block" onClick={()=>{this.navToPpage("/join")}}>
                   <ion-icon class="MainPageButtonIcon" name="enter" ></ion-icon>
                   <ion-text>Join a call</ion-text>
                 </ion-button>

@@ -3,8 +3,7 @@ import globalState from '../../global/app-state';
 
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
-  shadow: true
+  styleUrl: 'app-root.css'
 })
 export class AppRoot {
   changeGlobalPath = (newPath: string) => {

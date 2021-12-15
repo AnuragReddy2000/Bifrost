@@ -14,6 +14,9 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface AudioPlayer {
+        "mediaStream": MediaStream;
+    }
     interface CallPage {
         "roomname": string;
     }
@@ -51,6 +54,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLAudioPlayerElement extends Components.AudioPlayer, HTMLStencilElement {
+    }
+    var HTMLAudioPlayerElement: {
+        prototype: HTMLAudioPlayerElement;
+        new (): HTMLAudioPlayerElement;
+    };
     interface HTMLCallPageElement extends Components.CallPage, HTMLStencilElement {
     }
     var HTMLCallPageElement: {
@@ -80,6 +89,7 @@ declare global {
         "app-home": HTMLAppHomeElement;
         "app-profile": HTMLAppProfileElement;
         "app-root": HTMLAppRootElement;
+        "audio-player": HTMLAudioPlayerElement;
         "call-page": HTMLCallPageElement;
         "join-call": HTMLJoinCallElement;
         "new-call-page": HTMLNewCallPageElement;
@@ -94,6 +104,9 @@ declare namespace LocalJSX {
     interface AppProfile {
     }
     interface AppRoot {
+    }
+    interface AudioPlayer {
+        "mediaStream"?: MediaStream;
     }
     interface CallPage {
         "roomname"?: string;
@@ -111,6 +124,7 @@ declare namespace LocalJSX {
         "app-home": AppHome;
         "app-profile": AppProfile;
         "app-root": AppRoot;
+        "audio-player": AudioPlayer;
         "call-page": CallPage;
         "join-call": JoinCall;
         "new-call-page": NewCallPage;
@@ -125,6 +139,7 @@ declare module "@stencil/core" {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-profile": LocalJSX.AppProfile & JSXBase.HTMLAttributes<HTMLAppProfileElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "audio-player": LocalJSX.AudioPlayer & JSXBase.HTMLAttributes<HTMLAudioPlayerElement>;
             "call-page": LocalJSX.CallPage & JSXBase.HTMLAttributes<HTMLCallPageElement>;
             "join-call": LocalJSX.JoinCall & JSXBase.HTMLAttributes<HTMLJoinCallElement>;
             "new-call-page": LocalJSX.NewCallPage & JSXBase.HTMLAttributes<HTMLNewCallPageElement>;

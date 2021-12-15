@@ -86,21 +86,42 @@
     align-items: center;
 }
 
-body{
-    --mute-button-border: none;
-}
-
-body.dark{
-    --mute-button-border: 2px solid grey;
-}
 
 .MuteButton{
     margin: 0px 10px 0px 15px;
-    --background: red;
+    background-color: var(--mute-button-background) !important;
+    border-radius: 50px;
+    border: var(--mute-button-border);
+}
+
+.MutedButton{
+    background-color: red !important;
+    margin: 0px 10px 0px 15px;
     border-radius: 50px;
     border: var(--mute-button-border);
 }
 
 .ExitCallButton{
     height: 50px;
+    background-color: red;
+    border-radius: 25px;
+}
+
+.LoadingSpinner{
+    margin: 20px;
+    height: 100px;
+    width: 100px;
+    margin-top: 30px;
+}
+
+.InCallAvatar{
+    height: 170px;
+    width: 170px;
+    border-radius: 85px;
+    background-color: rgba(56, 128, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 }

@@ -19,15 +19,6 @@ export class NewCallPage {
     @State() remoteStream: MediaStream;
     @State() callerData: {displayName: string, avatar: string};
 
-    onCallStart(){
-        if(this.currentState === "INCALL"){
-            const audio = (document.getElementById("bifrost-audio-stream") as HTMLAudioElement);
-            audio.srcObject = this.remoteStream;
-            audio.autoplay = true;
-            audio.muted = false;
-        }
-    }
-
     randomizeRoomName = () => {
         this.roomName = randomWords({exactly: 2, maxLength: 4, join: "-"});
     }
@@ -56,6 +47,7 @@ export class NewCallPage {
     init = async () => {
         this.randomizeRoomName();
         const hash = await generateHash("bifrost-"+this.roomName);
+        await this.getLocalStream();
         let newPeer = new Peer("bifrost-"+ hash,{
             config: {
                 iceServers: [
@@ -69,10 +61,8 @@ export class NewCallPage {
                         credentialType: "password"
                     }
                 ]
-            },
-            debug: 3
+            }
         });
-        await this.getLocalStream();
         newPeer.on('open', ()=>{
             this.peer = newPeer;
             this.currentState = "WAITING";
@@ -100,7 +90,7 @@ export class NewCallPage {
                     call.peerConnection.addEventListener("iceconnectionstatechange", ()=>{
                         if (call.peerConnection.iceConnectionState == "disconnected"){
                             toastController.create({
-                                message: newCallerData.displayName + 'left the call!',
+                                message: newCallerData.displayName + ' left the call!',
                                 duration: 2000,
                                 color:"danger"
                             }).then((toast)=>{
@@ -129,8 +119,15 @@ export class NewCallPage {
     }
 
     getLocalStream = async () => {
-        const stream = await navigator.mediaDevices.getUserMedia({video: false, audio: true});
-        this.localStream = stream;
+        try{
+            const stream = await navigator.mediaDevices.getUserMedia({video: false, audio: true});
+            this.localStream = stream;
+        }
+        catch{
+            alert("This app needs access to the microphone in order to function. Please enable the same in settings.");
+            let ionRouterElement = document.querySelector('ion-router');
+            ionRouterElement.back();
+        }
     }
 
     getRenderingContent = () => {
@@ -162,7 +159,7 @@ export class NewCallPage {
                             <img height="130" src={"https://avatars.dicebear.com/api/gridy/" +this.callerData.avatar + ".svg"} alt="Caller Avatar"></img>
                         </div>
                         <ion-text color="primary"><h1><b>In call: {this.callerData.displayName}</b></h1></ion-text>
-                        <audio muted={false} id="bifrost-audio-stream" autoPlay/>
+                        <audio-player mediaStream={this.remoteStream}/>
                     </div>
                 </ion-card-content>
             )
@@ -173,10 +170,6 @@ export class NewCallPage {
         this.init();
     }
 
-    componentDidUpdate(){
-        this.onCallStart();
-    }
-
     endCall = async () => {
         const alert = await alertController.create({
             header: 'End Call?',
@@ -185,7 +178,8 @@ export class NewCallPage {
                 text: 'YES',
                 handler: ()=>{
                     this.peer.destroy();
-                    window.location.href = "/";
+                    let ionRouterElement = document.querySelector('ion-router');
+                    ionRouterElement.back();
                 }
             }, 'NO']
         });
@@ -209,7 +203,7 @@ export class NewCallPage {
                         <ion-text color={globalState.darkmode ? "light" : "dark"}><h3><b>{this.roomName}</b></h3></ion-text>
                         <ion-icon class="CallPageCopyButton" color={globalState.darkmode ? "light" : "dark"} name="copy-outline" size="large" ></ion-icon>
                     </div>
-                    <ion-fab-button onClick={this.muteToggle} class="MuteButton" color={this.mute ? "danger": (globalState.darkmode ? "dark":"light")}>
+                    <ion-fab-button onClick={this.muteToggle} class={this.mute ? "MutedButton":"MuteButton"} color={this.mute ? "danger": (globalState.darkmode ? "dark":"light")}>
                         <ion-icon color={globalState.darkmode ? "light" : "dark"} name={this.mute ? "mic-off":"mic" } ></ion-icon>
                     </ion-fab-button>
                     <ion-button class="ExitCallButton" color="danger" shape="round" onClick={this.endCall}>
